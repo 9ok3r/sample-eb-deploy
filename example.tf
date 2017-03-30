@@ -8,5 +8,5 @@ resource "aws_instance" "example" {
 }
 
 output "ip" {
-    value = "${aws_instance.ip.public_ip}"
+    value = "${aws_instance.example.ip.public_ip}"
 }
