@@ -73,6 +73,7 @@ apply_changes() {
   echo "apply changes"
   terraform apply
   terraform show
+  terraform apply
   terraform output ip
   popd
 }
