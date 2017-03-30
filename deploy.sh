@@ -61,6 +61,22 @@ install_terraform() {
   popd
 }
 
+restore_state(){
+  echo "Copying previous state file"
+  echo "-----------------------------------"
+
+  pushd $JOB_PREVIOUS_STATE
+  if [ -f "terraform.tfstate" ]; then
+    echo "Previous state file exists, copying"
+    echo "-----------------------------------"
+    cp -vr terraform.tfstate "/build/IN/master-branch/gitRepo"
+  else
+    echo "No previous state file exists, skipping"
+    echo "-----------------------------------"
+  fi
+  popd
+}
+
 apply_changes() {
   pushd /build/IN/$REPO_RESOURCE_NAME/gitRepo/
   echo "-----------------------------------"
@@ -73,10 +89,10 @@ apply_changes() {
   echo "apply changes"
   terraform apply
   terraform show
-  terraform apply
   terraform output ip
   popd
 }
 
 install_terraform
+restore_state
 apply_changes
