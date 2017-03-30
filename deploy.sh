@@ -75,3 +75,6 @@ apply_changes() {
   terraform show
   popd
 }
+
+install_terraform
+apply_changes
