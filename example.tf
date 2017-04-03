@@ -7,6 +7,6 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
 }
 
-output "ip" {
+outputs "ip" {
     value = "${aws_instance.example.ip.public_ip}"
 }
