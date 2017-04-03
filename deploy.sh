@@ -89,6 +89,7 @@ apply_changes() {
   echo "apply changes"
   terraform apply
   terraform show
+  cat terraform.tfstate
   terraform output ip
   popd
 }
